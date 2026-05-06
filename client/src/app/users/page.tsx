@@ -12,6 +12,7 @@ import {
 } from "@mui/x-data-grid";
 import Image from "next/image";
 import { dataGridClassNames, dataGridSxStyles } from "@/lib/utils";
+import { getImageSrc } from "@/lib/imageSrc";
 
 const CustomToolbar = () => (
   <GridToolbarContainer className="toolbar flex gap-2">
@@ -31,7 +32,7 @@ const columns: GridColDef[] = [
       <div className="flex h-full w-full items-center justify-center">
         <div className="h-9 w-9">
           <Image
-            src={`https://pm-s3-images.s3.us-east-2.amazonaws.com/${params.value}`}
+            src={getImageSrc(params.value)}
             alt={params.row.username}
             width={100}
             height={50}

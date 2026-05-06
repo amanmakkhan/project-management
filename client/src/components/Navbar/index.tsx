@@ -6,6 +6,7 @@ import { setIsDarkMode, setIsSidebarCollapsed } from "@/state";
 import { useGetAuthUserQuery } from "@/state/api";
 import { signOut } from "aws-amplify/auth";
 import Image from "next/image";
+import { getImageSrc } from "@/lib/imageSrc";
 
 const Navbar = () => {
   const dispatch = useAppDispatch();
@@ -78,7 +79,7 @@ const Navbar = () => {
           <div className="align-center flex h-9 w-9 justify-center">
             {!!currentUserDetails?.profilePictureUrl ? (
               <Image
-                src={`https://pm-s3-images.s3.us-east-2.amazonaws.com/${currentUserDetails?.profilePictureUrl}`}
+                src={getImageSrc(currentUserDetails?.profilePictureUrl)}
                 alt={currentUserDetails?.username || "User Profile Picture"}
                 width={100}
                 height={50}
